@@ -211,23 +211,24 @@ d3.csv("data.csv")
         .attr("cx", d => xLinearScale(d.poverty))
         .attr("cy", d => yLinearScale(d.obesity))
         .attr("r", 10)
-        .attr("fill", "lightgreen")
+        .attr("fill", "black")
         .attr("opacity", ".6")
         .attr("stroke-width", "1")
         .attr("stroke", "black");
 
-        chartGroup.select("g")
-        .selectAll("circle")
+
+      var textGroup = chartGroup.selectAll('.stateText')
         .data(StateData)
         .enter()
-        .append("text")
-        .text(d => d.abbr)
-        .attr("x", d => xLinearScale(d.poverty))
-        .attr("y", d => yLinearScale(d.obesity))
-        .attr("dy",-395)
+        .append('text')
+        .classed('stateText', true)
+        .attr('x', d => xLinearScale(d[chosenXAxis]))
+        .attr('y', d => yLinearScale(d[chosenYAxis]))
         .attr("text-anchor", "middle")
-        .attr("font-size", "12px")
-        .attr("fill", "red");
+        .attr("fill", "red")
+        .attr('dy', 3)
+        .attr('font-size', '10px')
+        .text(function(d){return d.abbr});
      
         console.log(StateData);
     
