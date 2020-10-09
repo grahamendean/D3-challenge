@@ -32,9 +32,9 @@ var chosenYAxis = 'obesity';
 function xScale(StateData, chosenXAxis) {
   // create scales
   var xLinearScale = d3.scaleLinear()
-    .domain([d3.min(StateData, d => d[chosenXAxis]) * 0.8,
-    d3.max(StateData, d => d[chosenXAxis]) * 1.2])
-    .range([width, 0]);
+    .domain([d3.min(StateData, d => d[chosenXAxis]) * 0.9,
+    d3.max(StateData, d => d[chosenXAxis]) * 1.1])
+    .range([0, width]);
 
   return xLinearScale;
 }
@@ -42,9 +42,9 @@ function xScale(StateData, chosenXAxis) {
 function yScale(StateData, chosenYAxis) {
   //scales
   var yLinearScale = d3.scaleLinear()
-    .domain([d3.min(StateData, d => d[chosenYAxis]) * 0.8,
-      d3.max(StateData, d => d[chosenYAxis]) ])
-    .range([height, 0]);
+    .domain([d3.min(StateData, d => d[chosenYAxis]) * 0.9,
+      d3.max(StateData, d => d[chosenYAxis]) * 1.1 ])
+    .range([0, height]);
   return yLinearScale;
 }
 
@@ -245,7 +245,7 @@ d3.csv("data.csv")
       .attr("dy", "1em")
       .attr("class", "axisText")
       .attr("value", "obseity")
-      .classed("active", true)
+      .attr("class", "active")
       .text("Obesity (%)");
 
     var PovertyLabel = XlabelGroup.append("text")
@@ -254,7 +254,7 @@ d3.csv("data.csv")
       .attr("dy", "1em")
       .attr("class", "axisText")
       .attr("value", "poverty")
-      .classed("active", true)
+      .attr("class", "active")
       .text("Poverty (%)");
 
     var SmokerLabel = YlabelGroup.append("text")
@@ -264,7 +264,7 @@ d3.csv("data.csv")
       .attr("dy", "1em")
       .attr("class", "axisText")
       .attr("value", "smokes")
-      .classed("inactive", true)
+      .attr("class", "inactive")
       .text("Smoker (%)");
 
     var IncomeLabel = XlabelGroup.append("text")
@@ -273,7 +273,7 @@ d3.csv("data.csv")
       .attr("dy", "1em")
       .attr("class", "axisText")
       .attr("value", "income")
-      .classed("inactive", true)
+      .attr("class", "inactive")
       .text("Income (Median)");
 
     var healthLabel = YlabelGroup.append("text")
@@ -283,7 +283,7 @@ d3.csv("data.csv")
       .attr("dy", "1em")
       .attr("class", "axisText")
       .attr("value", "healthcare")
-      .classed("inactive", true)
+      .attr("class", "inactive")
       .text("Without Healthcare (%)");
 
     var AgeLabel = XlabelGroup.append("text")
@@ -292,7 +292,7 @@ d3.csv("data.csv")
       .attr("dy", "1em")
       .attr("class", "axisText")
       .attr("value", "age")
-      .classed("inactive", true)
+      .attr("class", "inactive")
       .text("Age (Median)");
       // //updateToolTip function above csv import
       var circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
